@@ -14,6 +14,51 @@
  * @package WordPress
  */
 
+define( 'WP_CACHE', true );
+define( 'WPCACHEHOME', '/var/www/html/wp-content/plugins/wp-super-cache/' );
+// Define Environments
+$environments = array(
+    'development' => 'localhost',
+    'production' => 'store.mbird.com',
+);
+// Get Server name
+$server_name = $_SERVER['SERVER_NAME'];
+
+foreach($environments AS $key => $env){
+    if(strstr($server_name, $env)){
+        define('ENVIRONMENT', $key);
+        break;
+    }
+    else{ define('ENVIRONMENT', 'ec2'); }
+}
+// Define different DB connection details depending on environment
+switch(ENVIRONMENT) {
+    case 'development':
+        define('WP_SITEURL', 'http://localhost');
+        define('WP_HOME', 'http://localhost');
+        define('WP_DEBUG', true);
+        define('WP_CACHE', false);
+        @ini_set('log_errors','On'); // enable or disable php error logging (use 'On' or 'Off')
+        define('WP_DEBUG_DISPLAY', false);
+        define('WP_DEBUG_LOG', true);
+        define('SCRIPT_DEBUG', true);
+        define('SAVEQUERIES', true);
+        define('WP_ALLOW_REPAIR', true);
+        break;
+    case 'production':
+        define('WP_SITEURL', 'http://store.mbird.com/');
+        define('WP_HOME', 'http://store.mbird.com/');
+        define('WP_DEBUG', false);
+
+        break;
+    case 'ec2':
+        define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+        define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+}
+
+// If no environment is set default to production
+if(!defined('ENVIRONMENT')) define('ENVIRONMENT', 'ec2');
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', getenv('DB_NAME'));
