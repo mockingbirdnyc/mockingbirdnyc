@@ -5,7 +5,7 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/custom.css' );
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/default.css' );
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/shorcodes.css' );
-
+    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom-script.js', array ( 'jquery' ), 1.1, true);
 }
 
 /*-----------------------------------------------------------------------------------*/
