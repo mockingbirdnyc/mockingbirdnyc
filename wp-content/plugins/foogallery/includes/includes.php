@@ -29,25 +29,23 @@ require_once( FOOGALLERY_PATH . 'extensions/albums/class-albums-extension.php' )
 require_once( FOOGALLERY_PATH . 'extensions/default-templates/class-default-templates-extension.php' ); //Legacy!
 require_once( FOOGALLERY_PATH . 'extensions/default-templates/class-default-templates.php' );
 require_once( FOOGALLERY_PATH . 'extensions/nextgen-importer/class-nextgen-gallery-importer-extension.php' );
-require_once( FOOGALLERY_PATH . 'extensions/media-categories/class-media-categories-extension.php' );
 
 //load Template Loader files
 require_once( FOOGALLERY_PATH . 'includes/public/class-foogallery-template-loader.php' );
 
-//Polylang Compatibility
-require_once( FOOGALLERY_PATH . 'includes/class-polylang-compatibility.php' );
+//Load all Compatibility files
+require_once( FOOGALLERY_PATH . 'includes/compatibility/class-foogallery-compatibility.php' );
 
 require_once( FOOGALLERY_PATH . 'includes/class-version-check.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-animated-gif-support.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-cache.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-thumbnail-dimensions.php' );
-require_once( FOOGALLERY_PATH . 'includes/class-foobox-support.php' );
-require_once( FOOGALLERY_PATH . 'includes/class-responsive-lightbox-dfactory-support.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-common-fields.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-lazyload.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-paging.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-attachment-custom-class.php' );
 require_once( FOOGALLERY_PATH . 'includes/class-foogallery-extensions-compatibility.php' );
+require_once( FOOGALLERY_PATH . 'includes/class-foogallery-default-crop-position.php' );
 
 //Datasource includes
 require_once( FOOGALLERY_PATH . 'includes/interface-foogallery-datasource.php' );
@@ -72,7 +70,6 @@ if ( is_admin() ) {
 	require_once( FOOGALLERY_PATH . 'includes/admin/class-attachment-fields.php' );
 	require_once( FOOGALLERY_PATH . 'includes/admin/class-admin-css-load-optimizer.php' );
 	require_once( FOOGALLERY_PATH . 'includes/admin/class-admin-notices.php' );
-    require_once( FOOGALLERY_PATH . 'includes/admin/class-autoptimize-support.php' );
 
 } else {
 

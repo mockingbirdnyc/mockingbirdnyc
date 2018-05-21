@@ -3,16 +3,16 @@ Contributors: bradvin, steveush, fooplugins, freemius
 Donate link: http://fooplugins.com
 Tags: gallery, image gallery, photo gallery, responsive, album, media gallery, masonry gallery, portfolio, justified image gallery, video gallery, photography, photographer, retina
 Requires at least: 3.9
-Tested up to: 4.9.1
+Tested up to: 4.9.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-FooGallery is the best image gallery plugin for WordPress. Why? Stunning gallery layouts, responsive, retina-ready, lightning fast, easy to use.
+Why choose FooGallery? Stunning gallery layouts, responsive, retina-ready, lightning fast, easy to use.
 
 == Description ==
 
-FooGallery is the best image gallery plugin for WordPress. Why? Stunning gallery layouts, responsive, retina-ready, lightning fast, easy to use. Built to be highly configurable and extensible for developers or freelancers.
+Why choose FooGallery? Stunning gallery layouts, responsive, retina-ready, lightning fast, easy to use. Built to be highly configurable and extensible for developers or freelancers.
 
 [View the FooGallery Homepage & DEMO](http://foo.gallery/)
 
@@ -61,6 +61,8 @@ FooGallery was designed to be the most developer-friendly gallery plugin availab
 **PRO Features**
 
 *   11 Beautiful Hover Effect Presets
+*	Media Tags and Categories
+*	Gallery Filtering using Media Tags or Categories
 *   Polaroid PRO Gallery Template
 *   Grid PRO Gallery Template
 *   Advanced Pagination
@@ -98,8 +100,6 @@ FooGallery was designed to be the most developer-friendly gallery plugin availab
 *	[Custom Branding](http://fooplugins.com/plugins/foogallery-branding/?utm_source=foogalleryplugin&utm_medium=foogallerylink&utm_campaign=foogallery_wprepo)
 *	[FooBox PRO Lightbox](http://fooplugins.com/plugins/foobox/?utm_source=foogalleryplugin&utm_medium=foogallerylink&utm_campaign=foogallery_wprepo)
 *	[FooBox FREE Lightbox](http://wordpress.org/plugins/foobox-image-lightbox)
-*	[ZOOM Template](http://wordpress.org/plugins/foogallery-zoom-template/)
-*	[Use Media Menu](https://github.com/fooplugins/foogallery-media-menu)
 *	Build your own!!!
 
 **Documentation**
@@ -122,7 +122,7 @@ FooGallery is hosted on [GitHub](https://github.com/fooplugins/foogallery). If y
 
 = Why are my thumbnails so blurry? =
 
-Have you enabled retina support for your galleries? Displays with retina support can show better quality thumbnails when retina support is enabled. To enable retina support, edit the gallery and locate the Retina Support metabox.
+Have you enabled retina support for your galleries? To enable retina support, edit the gallery and locate the Retina Support metabox.
 
 = Can I add videos to my galleries? =
 
@@ -146,9 +146,54 @@ Hell, yes! Check out our [developer page](http://foo.gallery/developers/)
 
 == Upgrade Notice ==
 
-Update now to support FooVideo and many other improvements!
+Update now to get all the latest features, bug fixes and improvements!
 
 == Changelog ==
+
+= 1.4.30 =
+
+* Fix : Album 404 issues when used on homepage
+* Fix : Dimension attributes missing for upscaling small images
+* Fix : Issue when galleries cannot be added to an album
+* Fix : Lightbox caption mismatch
+* New : Setting for legacy thumb cropping in Simple Portfolio gallery
+* Update : FooGallery client side 1.0.26
+
+= 1.4.29 =
+
+* New : Added an album setting to set the gallery title size (h2,h3,h4,h5,h6)
+* Fix : media modal issues with Elementor
+* Fix : media modal issues with Thrive Architect
+* Fix : caption override fix for single thumbnail galleries
+* Update : media modal improvements
+
+= 1.4.27 =
+
+* Fix : Justified gallery issues in certain browsers / devices
+* Fix : Portfolio gallery issues in certain browsers / devices
+* Fix : Use of correct rel attribute for better lightbox compatibility and W3 validation
+* Fix : Removed local translations that were incomplete and outdated
+* Update : FooGallery client side 1.0.24
+* Update : language files
+
+= 1.4.26 =
+
+* Fix : Filtering introduced an array initialization construct not working for older versions of php
+
+= 1.4.25 =
+
+* New : Retina support for albums!
+* New : Default crop position setting for attachments
+* New : Speed up gallery previews in wp-admin
+* New : Caption support for Responsive Lightbox by dFactory
+* Fix : Extension loading issues on certain installs
+* Fix : Shortcode copy-to-clipboard metabox works again
+* Fix : Bugs fixes for paging, filtering, FooBox and more
+* Fix : Ensure jquery-ui-sortable is loaded on edit page for some installs
+* Fix : All-In-One Stack Album layout bugs
+* Fix : Reworked extensions listing page logic
+* Update : FooGallery client side 1.0.23
+* Update : Freemius SDK 1.2.4
 
 = 1.4.15 =
 
@@ -159,7 +204,7 @@ Update now to support FooVideo and many other improvements!
 * Fix : All-In-One stack album now uses the gallery featured image
 * Added more position options for Single Thumbnail Gallery
 * Added paging output setting
-* Update to latest client side JS 1.0.19
+* Update to latest client side JS 1.0.20
 
 = 1.4.12 =
 

@@ -7,9 +7,9 @@
  * Author URI: https://woocommerce.com/
  * Text Domain: woocommerce-services
  * Domain Path: /i18n/languages/
- * Version: 1.10.1
- * WC requires at least: 2.6.0
- * WC tested up to: 3.2.6
+ * Version: 1.13.3
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.3.4
  *
  * Copyright (c) 2017 Automattic
  *
@@ -34,8 +34,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once( plugin_basename( 'classes/class-wc-connect-options.php' ) );
+require_once( plugin_basename( 'classes/class-wc-connect-extension-compatibility.php' ) );
+require_once( plugin_basename( 'classes/class-wc-connect-functions.php' ) );
 require_once( plugin_basename( 'classes/class-wc-connect-jetpack.php' ) );
+require_once( plugin_basename( 'classes/class-wc-connect-options.php' ) );
 
 if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
@@ -51,6 +53,11 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		 * @var WC_Connect_Logger
 		 */
 		protected $logger;
+
+		/**
+		 * @var WC_Connect_Logger
+		 */
+		protected $shipping_logger;
 
 		/**
 		 * @var WC_Connect_API_Client
@@ -169,6 +176,11 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		protected $stripe;
 
 		/**
+		 * @var WC_Connect_PayPal_EC
+		 */
+		protected $paypal_ec;
+
+		/**
 		 * @var WC_REST_Connect_Tos_Controller
 		 */
 		protected $rest_tos_controller;
@@ -215,6 +227,14 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
 		public function set_logger( WC_Connect_Logger $logger ) {
 			$this->logger = $logger;
+		}
+
+		public function get_shipping_logger() {
+			return $this->shipping_logger;
+		}
+
+		public function set_shipping_logger( WC_Connect_Logger $logger ) {
+			$this->shipping_logger = $logger;
 		}
 
 		public function get_api_client() {
@@ -379,6 +399,14 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
 		public function set_stripe( WC_Connect_Stripe $stripe ) {
 			$this->stripe = $stripe;
+		}
+
+		public function set_paypal_ec( WC_Connect_PayPal_EC $paypal_ec ) {
+			$this->paypal_ec = $paypal_ec;
+		}
+
+		public function set_label_reports( WC_Connect_Label_Reports $label_reports ) {
+			$this->label_reports = $label_reports;
 		}
 
 		/**
@@ -560,8 +588,15 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			require_once( plugin_basename( 'classes/class-wc-connect-shipping-label.php' ) );
 			require_once( plugin_basename( 'classes/class-wc-connect-nux.php' ) );
 			require_once( plugin_basename( 'classes/class-wc-connect-stripe.php' ) );
+			require_once( plugin_basename( 'classes/class-wc-connect-paypal-ec.php' ) );
+			require_once( plugin_basename( 'classes/class-wc-connect-label-reports.php' ) );
 
-			$logger                = new WC_Connect_Logger( new WC_Logger() );
+			$core_logger           = new WC_Logger();
+			$logger                = new WC_Connect_Logger( $core_logger );
+			$taxes_logger          = new WC_Connect_Logger( $core_logger, 'taxes' );
+			$payments_logger       = new WC_Connect_Logger( $core_logger, 'payments' );
+			$shipping_logger       = new WC_Connect_Logger( $core_logger, 'shipping' );
+
 			$validator             = new WC_Connect_Service_Schemas_Validator();
 			$api_client            = new WC_Connect_API_Client( $validator, $this );
 			$schemas_store         = new WC_Connect_Service_Schemas_Store( $api_client, $logger );
@@ -570,11 +605,14 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			$tracks                = new WC_Connect_Tracks( $logger, __FILE__ );
 			$shipping_label        = new WC_Connect_Shipping_Label( $api_client, $settings_store, $schemas_store );
 			$nux                   = new WC_Connect_Nux( $tracks, $shipping_label );
-			$taxjar                = new WC_Connect_TaxJar_Integration( $api_client, $logger );
+			$taxjar                = new WC_Connect_TaxJar_Integration( $api_client, $taxes_logger );
 			$options               = new WC_Connect_Options();
-			$stripe                = new WC_Connect_Stripe( $api_client, $options, $logger );
+			$stripe                = new WC_Connect_Stripe( $api_client, $options, $payments_logger );
+			$paypal_ec             = new WC_Connect_PayPal_EC( $api_client, $nux );
+			$label_reports         = new WC_Connect_Label_Reports( $settings_store );
 
 			$this->set_logger( $logger );
+			$this->set_shipping_logger( $shipping_logger );
 			$this->set_api_client( $api_client );
 			$this->set_service_schemas_validator( $validator );
 			$this->set_service_schemas_store( $schemas_store );
@@ -585,6 +623,8 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			$this->set_nux( $nux );
 			$this->set_taxjar( $taxjar );
 			$this->set_stripe( $stripe );
+			$this->set_paypal_ec( $paypal_ec );
+			$this->set_label_reports( $label_reports );
 		}
 
 		/**
@@ -645,11 +685,13 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			add_action( 'admin_init', array( $this, 'load_admin_dependencies' ) );
 			add_filter( 'wc_connect_shipping_service_settings', array( $this, 'shipping_service_settings' ), 10, 3 );
 			add_action( 'woocommerce_email_after_order_table', array( $this, 'add_tracking_info_to_emails' ), 10, 3 );
+			add_filter( 'woocommerce_admin_reports', array( $this, 'reports_tabs' ) );
 
 			$tracks = $this->get_tracks();
 			$tracks->init();
 
 			$this->taxjar->init();
+			$this->paypal_ec->init();
 		}
 
 		public function tos_rest_init() {
@@ -838,6 +880,28 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		}
 
 		/**
+		 * Filter function for adding the report tabs
+		 *
+		 * @param array $reports - report tabs meta
+		 * @return array report tabs with WCS tabs added
+		 */
+		public function reports_tabs( $reports ) {
+			$reports[ 'wcs_labels' ] = array(
+				'title' => __( 'Shipping Labels', 'woocommerce-services' ),
+				'reports' => array(
+					'connect_labels'     => array(
+						'title'       => __( 'Shipping Labels', 'woocommerce-services' ),
+						'description' => '',
+						'hide_title'  => true,
+						'callback'    => array( $this->label_reports, 'output_report' ),
+					),
+				),
+			);
+
+			return $reports;
+		}
+
+		/**
 		 * Add tracking info (if available) to completed emails using the woocommerce_email_after_order_table hook
 		 *
 		 * @param $order
@@ -847,8 +911,10 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		public function add_tracking_info_to_emails( $order, $sent_to_admin, $plain_text ) {
 			$id = WC_Connect_Compatibility::instance()->get_order_id( $order );
 
-			// Abort if no id was passed or if the order is not marked as 'completed'
-			if ( ! $id || ! $order->has_status( 'completed' ) ) {
+			// Abort if no id was passed, if the order is not marked as 'completed' or if another extension is handling the emailing
+			if ( ! $id
+				|| ! $order->has_status( 'completed' )
+				|| ! WC_Connect_Extension_Compatibility::should_email_tracking_details( $id ) ) {
 				return;
 			}
 
@@ -958,7 +1024,7 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			// TODO - make more generic - allow things other than WC_Connect_Shipping_Method to work here
 
 			$method->set_api_client( $this->get_api_client() );
-			$method->set_logger( $this->get_logger() );
+			$method->set_logger( $this->get_shipping_logger() );
 			$method->set_service_settings_store( $this->get_service_settings_store() );
 
 			$service_schema = $this->get_service_schemas_store()->get_service_schema_by_id_or_instance_id( $id_or_instance_id );

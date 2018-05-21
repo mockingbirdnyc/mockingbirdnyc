@@ -4,6 +4,7 @@
  */
 global $current_foogallery_album;
 global $current_foogallery_album_arguments;
+global $current_foogallery;
 $args = foogallery_album_template_setting( 'thumbnail_dimensions', array() );
 $lightbox = foogallery_album_template_setting( 'lightbox', 'unknown' );
 $random_angle = foogallery_album_template_setting( 'random_angle', 'false' );
@@ -13,7 +14,7 @@ $pile_angles = foogallery_album_template_setting( 'pile_angles', '2' );
 if ( !function_exists( 'foogallery_album_all_in_one_stack_render_gallery_attachment' ) ) {
 	function foogallery_album_all_in_one_stack_render_gallery_attachment( $gallery, $attachment, $args, $lightbox ) {
 		echo '<li data-pile="' . esc_attr( $gallery->name ) . '">';
-		$args['link_attributes']['rel']   = 'gallery[' . $gallery->ID . ']';
+		$args['link_attributes']['rel']   = 'lightbox[' . $gallery->ID . ']';
 		$args['link_attributes']['class'] = apply_filters( 'foogallery_album_stack_link_class_name', $lightbox );
 		echo $attachment->html( $args, false, false );
 		if ( $attachment->caption ) {
@@ -33,15 +34,17 @@ if ( !function_exists( 'foogallery_album_all_in_one_stack_render_gallery_attachm
 	<ul id="foogallery-stack-album-<?php echo $current_foogallery_album->ID; ?>" class="tp-grid">
 		<?php
 		foreach ( $current_foogallery_album->galleries() as $gallery ) {
-			$featured_image = $gallery->featured_attachment();
+			$current_foogallery = $gallery;
+			$featured_attachment = $gallery->featured_attachment();
+			//render the featured attachment first
+			foogallery_album_all_in_one_stack_render_gallery_attachment( $gallery, $featured_attachment, $args, $lightbox );
 
 			foreach ( $gallery->attachments() as $attachment ) {
-				if ( $featured_image->ID !== $attachment->ID ) {
-					//force the featured image to be last!
+				if ( $featured_attachment->ID !== $attachment->ID ) {
+					//render all but the featured attachment
 					foogallery_album_all_in_one_stack_render_gallery_attachment( $gallery, $attachment, $args, $lightbox );
 				}
 			}
-			foogallery_album_all_in_one_stack_render_gallery_attachment( $gallery, $featured_image, $args, $lightbox );
 		}
 		?>
 	</ul>

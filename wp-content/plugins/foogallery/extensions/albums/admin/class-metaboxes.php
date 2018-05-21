@@ -146,9 +146,14 @@ if ( ! class_exists( 'FooGallery_Admin_Album_MetaBoxes' ) ) {
 		}
 
 		public function get_ordered_galleries( $album ) {
+		    //exclude the galleries already added to the album
+            $excluded_galleries = $album->gallery_ids;
+
+            //allow more galleries to be excluded
+            $excluded_galleries = apply_filters( 'foogallery_album_exlcuded_galleries', $excluded_galleries, $album );
 
 			//get all other galleries
-			$galleries = foogallery_get_all_galleries( $album->gallery_ids );
+			$galleries = foogallery_get_all_galleries( $excluded_galleries );
 
 			$album_galleries = $album->galleries();
 
@@ -241,14 +246,14 @@ if ( ! class_exists( 'FooGallery_Admin_Album_MetaBoxes' ) ) {
 			$shortcode = $album->shortcode();
 			?>
 			<p class="foogallery-shortcode">
-				<input type="text" id="foogallery-copy-shortcode" size="<?php echo strlen( $shortcode ); ?>" value="<?php echo htmlspecialchars( $shortcode ); ?>" readonly="readonly" />
+				<input type="text" id="foogallery_copy_shortcode" size="<?php echo strlen( $shortcode ); ?>" value="<?php echo htmlspecialchars( $shortcode ); ?>" readonly="readonly" />
 			</p>
 			<p>
 				<?php _e( 'Paste the above shortcode into a post or page to show the album.', 'foogallery' ); ?>
 			</p>
 			<script>
 				jQuery(function($) {
-					var shortcodeInput = document.querySelector('#foogallery-copy-shortcode');
+					var shortcodeInput = document.querySelector('#foogallery_copy_shortcode');
 					shortcodeInput.addEventListener('click', function () {
 						try {
 							// select the contents

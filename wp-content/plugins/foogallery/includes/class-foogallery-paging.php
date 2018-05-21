@@ -8,7 +8,7 @@ if ( ! class_exists( 'FooGallery_Paging' ) ) {
 
 		function __construct() {
 			if ( is_admin() ) {
-				//add extra fields to the templates that support lazy loading
+				//add extra fields to the templates that support paging
 				add_filter( 'foogallery_override_gallery_template_fields', array( $this, 'add_paging_fields' ), 10, 2 );
 
 				//build up any preview arguments
@@ -110,7 +110,7 @@ if ( ! class_exists( 'FooGallery_Paging' ) ) {
 					'spacer'  => '<span class="spacer"></span>',
 					'type'    => 'radio',
 					'default' => 'fg-light',
-					'choices' => apply_filters( 'foogallery_gallery_template_paging_position_choices', array(
+					'choices' => apply_filters( 'foogallery_gallery_template_paging_theme_choices', array(
 						'fg-light'  => __( 'Light', 'foogallery' ),
 						'fg-dark'   => __( 'Dark', 'foogallery' ),
 					) ),
