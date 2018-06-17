@@ -14,8 +14,8 @@
  * @package WordPress
  */
 
-define( 'WP_CACHE', true );
 define( 'WPCACHEHOME', '/var/www/html/wp-content/plugins/wp-super-cache/' );
+define( 'WP_CACHE', true );
 // Define Environments
 $environments = array(
     'development' => 'localhost',
@@ -131,7 +131,7 @@ define('WPLANG', '');
  * Change this to true to enable the display of notices during development.
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
- */
+ */ 
 define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
