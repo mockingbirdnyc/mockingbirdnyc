@@ -1,0 +1,15 @@
+%none-box-radius {
+	box-shadow:none!important;
+	border-radius:0!important;
+}
+
+
+.redux-container .ui-button, .control-section-redux .ui-button, .control-panel-redux .ui-button, .redux-metabox .ui-button {
+	@extend %none-box-radius;
+}
+.admin-color-fresh .redux-container-switch .cb-enable.selected, .admin-color-fresh .redux-field-container .ui-buttonset .ui-state-active, .wp-customizer .redux-container-switch .cb-enable.selected, .wp-customizer .redux-field-container .ui-buttonset .ui-state-active {
+    background-color: #00a0d2 !important;
+    background-image:none !important;
+    border-color: transparent !important;
+    @extend %none-box-radius;
+}

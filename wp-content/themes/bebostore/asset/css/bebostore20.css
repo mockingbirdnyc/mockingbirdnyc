@@ -1,0 +1,86 @@
+/**
+ * Remake Aug 03 2017
+ * SCSS for bookstore version 2.0.0
+ * @author Binjuhor - <binjuhor@gmail.com>
+ * @version 2.0.0
+ */
+.book-item .book-image:before {
+  content: "";
+  position: absolute;
+  z-index: 22;
+  height: 100%;
+  width: 100%;
+  background: url(../images/book-after.png) repeat-y left;
+  background-size: 100% 100%;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.9);
+  left: 0; }
+
+.archive .shop-left-bar .shop-list ul li .book-item-shop .book-info {
+  position: relative;
+  width: 100%;
+  text-align: center; }
+
+.shop-left-bar {
+  margin-top: 30px; }
+
+.breadthums-navigation .gridlist-toggle {
+  position: relative;
+  float: right;
+  top: -65px; }
+  .breadthums-navigation .gridlist-toggle a {
+    background: transparent !important; }
+
+.archive .breadthums-navigation .woocommerce-ordering {
+  padding-right: 60px; }
+
+.archive .breadthums-navigation .woocommerce-ordering .position-sort {
+  display: inline-block;
+  position: static;
+  min-width: 220px;
+  clear: none; }
+
+.archive .shop-left-bar .shop-list ul.list li .book-item-shop .book-info .book-desc {
+  height: auto !important; }
+
+.archive .shop-left-bar .shop-list ul.list li .book-item-shop .book-actions .list-action .yith-wcwl-add-to-wishlist .yith-wcwl-add-button a {
+  position: static;
+  min-width: 180px; }
+
+.archive .shop-left-bar .shop-list ul.list li .book-item-shop .book-item .book-actions {
+  display: none !important; }
+
+.book-list-actions .archive .shop-left-bar .shop-list ul.list li .book-item-shop .book-info .book-price .price ins span {
+  position: static; }
+
+.list .button-action .btn.btn-buyproduct, .list .button-action a.add_to_wishlist, .list .yith-wcwl-wishlistexistsbrowse a {
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  padding: 5px 25px;
+  display: inline-block;
+  line-height: 25px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .list .button-action .btn.btn-buyproduct:hover, .list .button-action a.add_to_wishlist:hover, .list .yith-wcwl-wishlistexistsbrowse a:hover {
+    background: #f07c29;
+    color: #fff;
+    border-color: #f07c29; }
+
+.button-action {
+  display: none; }
+
+.list .woocommerce-Price-currencySymbol {
+  position: static !important; }
+.list .button-action {
+  display: block; }
+.list .yith-wcwl-add-to-wishlist {
+  margin-left: 15px;
+  display: inline-block; }
+  .list .yith-wcwl-add-to-wishlist .feedback {
+    display: none; }
+
+ul.products.list li.product img.ajax-loading {
+  width: 16px !important;
+  height: 16px !important; }
+
+/*# sourceMappingURL=bebostore20.css.map */

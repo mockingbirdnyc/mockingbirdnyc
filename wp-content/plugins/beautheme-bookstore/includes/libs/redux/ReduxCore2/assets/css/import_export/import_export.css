@@ -1,0 +1,14 @@
+/* line 1, import_export.scss */
+#redux-import-link-wrapper, #redux-import-code-wrapper {
+  display: none;
+}
+
+/* line 5, import_export.scss */
+#redux-export-code, #redux-export-link-value {
+  display: none;
+}
+
+/* line 9, import_export.scss */
+#redux-import-action span {
+  color: #B94A48;
+}

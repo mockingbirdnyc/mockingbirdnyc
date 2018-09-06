@@ -1,0 +1,220 @@
+@import './redux/redux';
+@import './redux/fields/field_color_rgba';
+@import './redux/fields/field_button_set';
+.redux-container #redux-form-wrapper .redux-sidebar-head .redux-logo {
+    background-image: url(../images/beau-core.png);
+}
+.about-wrap .about-description, .about-wrap .about-text {
+    margin-top: 1.4em;
+    font-weight: 400;
+    line-height: 1.6em;
+    font-size: 19px;
+}
+.about-wrap .about-text {
+    margin-bottom: 1.4em;
+    min-height: auto;
+}
+.beau-thanks {
+    float: left;
+    width: 100%;
+}
+
+.about-wrap.beau-wrap {
+	.beau-logo {
+	    background: #fff url(../images/logobeau.png) no-repeat center;
+	    border: none;
+	    padding-top: 80px;
+	    height: 30px;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 14px;
+	    text-align: center;
+	    font-weight: 600;
+	    margin: 5px 0 0;
+	    display: inline-block;
+	    width: 150px;
+	    text-rendering: optimizeLegibility;
+	    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	}
+	.beau-version {
+		background-color: #36BEF9;
+	    background: linear-gradient(to top right, #09F370, #36BEF9);
+        margin-top: 30px;
+	    display: block;
+	    padding: 10px 0;
+
+	    color: #fff;
+	    text-align: center;
+	    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	}
+	.nav-tab-wrapper {
+		margin-bottom:30px;
+	}
+	.welcome-tour {
+		iframe {
+			max-width: 100%;
+			width:100%;
+		}
+	}
+	.beau-plugins-list {
+		display: flex;
+	    flex-wrap: wrap;
+	    @media only screen and (min-width: 992px) {
+		    margin-left: -0.5%;
+		    margin-right: -0.5%;
+		}
+	}
+	.plugin-card {
+		width: 100%;
+		margin:1% 0;
+		@media only screen and (min-width: 992px) {
+			width: 49%;
+    		margin: 1% 0.5%;
+		}
+
+	}
+	.plugin-icon{
+		border: none;
+	}
+	.plugin-card .desc, .plugin-card .name {
+		margin-right:0;
+	}
+	.plugin-card-top {
+		.plugin-required,.plugin-recommend{
+		    text-transform: uppercase;
+		    color: #fff;
+		    padding: 2px 5px;
+		    position: absolute;
+		    top: 30px;
+		    z-index:2;
+		    font-size:11px;
+		}
+		.plugin-required {
+		    background: rgba(213, 78, 33, .95);
+		}
+		.plugin-recommend {
+		    background: rgba(33, 213, 138, 0.97)
+
+		}
+	}
+	.plugin-card-bottom {
+		.plugin-action {
+
+		}
+		&.active {
+			background: #23282d;
+		}
+	}
+	.beau-important-notice {
+	    padding: 10px 20px;
+	    background: #fff;
+	    margin: 0px 0px 30px;
+	    .about-description {
+	    	font-size:15px;
+	    }
+	}
+	.beau-support {
+		.col {
+			h3 {
+				font-size: 1em;
+			    margin: 1.4em 0 0.6em;
+			    font-weight: normal;
+			    > span {
+			    	margin-right:10px;
+			    }
+			}
+		}
+	}
+	.beau-system-status {
+		table {
+		    margin-bottom: 20px;
+		    th {
+		    	font-weight: 700;
+    			padding: 9px;
+		    }
+	    	td:first-child {
+    			width: 33%;
+			}
+			.help {
+				width: 1em;
+			}
+		}
+		mark.yes {
+		    color: #7ad03a;
+		    background: 0;
+		}
+		mark.error {
+		  color: #a00;
+		  background: 0;
+		}
+	}
+	.beau-demo-themes {
+		.theme {
+			.theme-screenshot img {
+				transition: opacity 0.2s ease-in-out 0s, transform 0.2s ease-in-out 0s;
+			}
+			&:hover {
+				.theme-screenshot img {
+			    	opacity: 0.6;
+    				-webkit-transform: scale(1.1);
+    				transform: scale(1.1);
+				}
+			}
+		}
+		.theme-browser .theme .theme-actions {
+			opacity: 1;
+		}
+		.demo-import-loader {
+		    background: rgba(255, 255, 255, 0.7);
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    text-align: center;
+		    display: none;
+		}
+		.theme-new {
+			text-transform: uppercase;
+		    color: #fff;
+		    padding: 2px 5px;
+		    position: absolute;
+		    top: 30px;
+		    z-index:2;
+		    font-size:11px;
+		    background-color: #f309ec;
+            background: linear-gradient(to top right, #f309ec, #f9ea36);
+		}
+	}
+}
+.acf_none .acf-label {
+    display: none !important;
+}
+.acf_none:before{
+    background: none!important;
+    border: none!important;
+}
+.acf_none .acf-input {
+    width: 100%!important;
+
+}
+.acf-field-repeater.acf_hide_label > .acf-label {
+    display: none !important;
+}
+.acf_hidden {
+    display: none!important;
+}
+.redux-container #redux-form-wrapper .redux-group-tab table.form-table tbody{
+    .custom_css_section {
+        th[scope="row"] {
+            width: 100% !important;
+            float: left;
+        }
+        > td {
+            float: left;
+            width: 100%;
+        }
+    }
+}

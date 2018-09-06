@@ -1,0 +1,282 @@
+.redux-main {
+	.wp-picker-container {
+		.wp-color-result {
+		    border-radius: 0;
+		    height: 31px;
+		    box-shadow: none;
+		    box-sizing: border-box;
+		    &:after{
+		    	line-height:29px;
+		    }
+		}
+		.wp-picker-input-wrap {
+			margin: 0 3px;
+			input {
+				height: 31px;
+			}
+		}
+		.iris-picker .iris-square, .iris-picker .iris-slider, .iris-picker .iris-square-inner, .iris-picker .iris-palette{
+			border-radius:0;
+		}
+	}
+}
+.redux-container #redux-form-wrapper .redux-main input:not(.button-primary), .redux-container #redux-form-wrapper .redux-main .select2-choice, .redux-container #redux-form-wrapper .redux-main .select2-drop, .redux-container #redux-form-wrapper .redux-main textarea {
+    background: #f4f2f2 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.redux-sidebar .redux-group-menu {
+	li a {
+		padding: 8px 4px 8px 20px;
+		font-weight: 400;
+
+	}
+	ul.subsection li a {
+		padding-top:8px !important;
+		padding-bottom:8px!important;
+		font-weight: 400;
+
+	}
+}
+.redux-container {
+	.redux-main {
+		.input-append,.input-prepend {
+			.add-on {
+				border-radius:0;
+				box-shadow: none;
+			}
+		}
+	}
+
+	#redux-form-wrapper {
+		.form-table th {
+			width: 50% !important;
+		}
+		.redux-group-tab {
+		    position: relative;
+		    padding: 0 30px;
+		    h2 {
+		    	margin: 3em 0 2em;
+			    padding: 8px 15px;
+			    background-color: #f4f2f2;
+			    line-height: 1.5;
+		    }
+		}
+		.redux-container-switch {
+			.cb-disable,.cb-enable {
+				@extend %none-box-radius;
+				span {
+					font-weight: normal;
+				}
+			}
+			.cb-disable {
+				&.selected {
+					background: black !important;
+				}
+			}
+		}
+		.redux-main {
+			.select2-container-multi {
+				.select2-choices {
+					background-color: #f4f2f2 !important;
+				    background-image: inherit;
+					.select2-search-choice{
+						line-height: 1.1rem;
+					    background-color: initial !important;
+					    border-radius: 0;
+					    background-image: initial;
+					}
+				}
+
+			}
+			.redux-container-sorter  {
+
+				ul  {
+					background: none;
+					border:none;
+					h3 {
+						font-size: 1rem;
+					    text-transform: capitalize;
+					}
+					li{
+						border-radius:0;
+						height: 30px;
+    					line-height: 30px !important;
+    					background: #f4f2f2 !important;
+					}
+				}
+				
+			}
+			.redux-container-spinner {
+				.ui-widget {
+					.ui-spinner-button{
+						border-radius:0;
+						[class*="ui-"] {
+							border-radius:0;
+						}
+					}
+				}
+
+			}
+			.redux-typography-container {
+				.select_wrapper {
+				    max-width: calc(50% - 10px) !important;
+				    min-width: 160px !important;
+				    height: 67px;
+				}
+				.select2-container  {
+					.select2-choice{
+						border-radius:0;
+					}
+				}
+				.input_wrapper  {
+					input.mini{
+						border-radius: 0;
+					}
+				}
+			}
+		}
+	}
+	#redux-footer {
+    	right: inherit !important;
+    }
+}
+.redux-container-slider {
+	.redux-slider-input {
+		margin-right: 25px;
+	}
+	.redux-slider-label{
+		margin-left:0;
+		position: relative;
+		display: inline-block;
+    	margin-right: 25px;
+	}
+	.redux-slider-container {
+		margin: 10px 0 10px 0;
+    	width: calc(100% - 130px);
+	}
+	.noUi-target {
+		border-radius: 0 !important;
+	 	box-shadow: none;
+	    border: none;
+	    &.noUi-origin{
+	    	top: -2px;
+    		background-color: initial !important;
+	    }
+		&.noUi-connect {
+			background-color: transparent !important;
+		    background-color: rgba(0, 0, 0, 0) !important;
+		    background-image: none !important;
+		    box-shadow: none;
+		    border: none;
+		    border-top: 2px solid #00a0d2;
+		    border-radius: 0 !important;
+		    -moz-border-radius: 0 !important;
+		    -webkit-border-radius: 0 !important;
+		    border-bottom-left-radius: 0 !important;
+		    border-bottom-right-radius: 0 !important;
+		    border-top-left-radius: 0 !important;
+		    border-top-right-radius: 0 !important;
+		    position: relative;
+		    top: 6px;
+		    border-top-color: #00a0d2;
+		}
+	}
+	.noUi-handle{
+		border: none !important;
+	    background-color: #00a0d2 !important;
+	    background-image: none !important;
+	    box-shadow: none !important;
+	    box-sizing: border-box;
+	    width: 12px;
+	    height: 12px;
+	    left: -10px;
+	    top: -5px;
+	    cursor: ew-resize;
+	    border-radius: 100%;
+	    transition: all 0.2s ease-out;
+	    &.noUi-active {
+		    -webkit-transform: scale3d(2.5, 2.5, 1);
+	    	transform: scale3d(2.5, 2.5, 1);
+	    }
+	}
+	.noUi-origin{
+		margin: 0;
+	    border-radius: 0;
+	    height: 2px;
+	    background: #c8c8c8;
+	    &.noUi-background {
+	    	top: -2px;
+	    }
+	}
+	.noUi-handle:before, .noUi-handle:after {
+		content: none;
+	}
+}
+
+
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .wp-picker-container.wp-picker-active input[type="text"] {
+//     width: 174px !important;
+//     margin: 0 3px !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-palette-container, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-palette-container, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-palette-container {
+// 	width: 250px !important;
+//     bottom: 8px;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-picker .iris-picker-inner .iris-square, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-picker .iris-picker-inner .iris-square, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-picker .iris-picker-inner .iris-square{
+// 	margin: 0;
+//     width: 247px !important;
+//     height: 198px !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-picker .iris-picker-inner > .iris-strip, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip {
+//     width: 25px !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .wp-picker-container.wp-picker-active .iris-picker .iris-picker-inner > .iris-strip {
+//     left: 10px;
+//     margin-left: 0 !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset {
+//     top: 14px;
+//     bottom: 0;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .wp-picker-container.wp-picker-active .iris-picker .iris-picker-inner > .iris-strip {
+//     left: 10px;
+//     margin-left: 0 !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .wp-picker-container.wp-picker-active .iris-picker .iris-picker-inner > .iris-alpha-slider {
+//     margin-left: 23px !important;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-picker .iris-square-inner, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-picker .iris-square-inner, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-picker .iris-square-inner, .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-picker .iris-palette, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-picker .iris-palette, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-picker .iris-palette {
+// 	box-sizing: border-box;
+// }
+// .redux-container #redux-form-wrapper .redux-main .redux-container-color .iris-palette-container .iris-palette, .redux-container #redux-form-wrapper .redux-main .redux-container-color_alpha .iris-palette-container .iris-palette, .redux-container #redux-form-wrapper .redux-main .redux-typography-container .wp-picker-container .iris-palette-container .iris-palette {
+//     width: 19px !important;
+//     height: 19px !important;
+// }
+// .redux-container #redux-form-wrapper .form-table .redux-field-container {
+// 	padding: 25px 0;
+// }
+.redux-container #redux-form-wrapper .redux-sidebar .redux-group-menu > li.activeChild.hasSubSections {
+	> a {
+	    background-color: #0073aa;
+	    color: #fff;
+	}
+	ul.subsection li {
+		a {
+			background-color: #32373c;
+    		color: rgba(#fff, 0.7);
+		}
+		    
+		&.active a{
+			background-color: #32373c;
+	    	color: #fff;
+    	}
+    }
+}
+
+.redux-container-color_alpha  {
+	.iris-picker .iris-strip .ui-slider-handle {
+		width: 16px;
+	}	
+}
+

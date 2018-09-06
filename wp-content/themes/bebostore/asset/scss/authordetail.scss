@@ -1,0 +1,123 @@
+.author-detail{
+    float: left;
+    width: 100%;
+    background: #ede8de;
+    padding-top: 103px;
+    padding-bottom: 30px;
+    .avatar-author{
+        img{
+            max-width: 100%;
+            @include RP(S){
+                width: 100%;
+            }
+        }
+    }
+    .social{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        .auth-social{
+            list-style: none;
+            padding-left: 0px;
+            margin-top: 10px;
+            li{
+                list-style:none;
+                display: inline-block;
+                text-align: center;
+                margin: 5px;
+                a{
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background: #d5d0c7;
+                    color: rgba(#000000, .4);
+                    line-height: 30px;
+                    text-align: center;
+                    @include font-size(16px);
+                    &:hover{
+                        color: #fff;
+                        background: $active-color;
+                    }
+                }
+            }
+        }
+    }
+    .detail-author-description{
+        box-sizing: border-box;
+        padding-left: 30px;
+        @include RP(S){
+            padding-left: 0px;
+        }
+        .title-author{
+            font-family: $Ti;
+            @include font-size(40px);
+            color: #000;
+            font-weight: bold;
+        }
+        .year-author{
+            font-family: $La;
+            @include font-size(12px);
+            color: rgba(#000, .5);
+            margin-bottom: 20px;
+        }
+        .desc-auth{
+            font-family: $Me;
+            @include font-size(12px);
+            line-height: 24px;
+            letter-spacing: .5px;
+        }
+    }
+}
+
+/*Book By*/
+.title-list-book, .title-boxies{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 70px;
+    font-family: $La;
+    @include font-size(16px);
+    color: rgba(#000, .7);
+}
+.book-by{
+    float: left;
+    width: 100%;
+
+    .book-grid{
+        border-bottom: 1px dashed rgba(#000, .2);
+
+       .book-item-author{
+            width:100px;
+            // display: inline-block;
+            float: left;
+            margin-right: 35px;
+            margin-bottom: 30px;
+            min-height: 197px;
+            @media only screen and (min-width: 1200px) {
+                &:nth-child(8n){
+                    margin-right: 0px;
+                }
+            }
+            .book-info{
+                .book-name{
+                    font-weight: normal;
+                    @include font-size(14px);
+                    color: rgba(#000, .7);
+                    min-height: 36px;
+                    // display: inline-block;
+                }
+            }
+            .author-info{
+                display: inline-block;
+                margin-top: 10px;
+            }
+       }
+    }
+}
+
+.other-author{
+    .list-author-name{
+        border-bottom: none;
+        padding-bottom: 0px;
+    }
+}
