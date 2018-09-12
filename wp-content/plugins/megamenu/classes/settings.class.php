@@ -977,7 +977,7 @@ class Mega_Menu_Settings {
                                                         <div class='mega-description'><?php _e("For use in a theme template (usually header.php)", "megamenu"); ?></div>
                                                     </td>
                                                     <td class='mega-value'>
-                                                        <textarea>&lt;?php wp_nav_menu( array( 'theme_location' => '<?php echo $location ?>' ) ); ?&gt;</textarea>
+                                                        <textarea readonly="readonly">&lt;?php wp_nav_menu( array( 'theme_location' => '<?php echo $location ?>' ) ); ?&gt;</textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -986,7 +986,7 @@ class Mega_Menu_Settings {
                                                         <div class='mega-description'><?php _e("For use in a post or page.", "megamenu"); ?></div>
                                                     </td>
                                                     <td class='mega-value'>
-                                                        <textarea>[maxmegamenu location=<?php echo $location ?>]</textarea>
+                                                        <textarea readonly="readonly">[maxmegamenu location=<?php echo $location ?>]</textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>

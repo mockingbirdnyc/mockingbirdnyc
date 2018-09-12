@@ -109,6 +109,11 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 2.5.2 =
+
+* Fix: Revert "When WPML is installed, do not override the wp_nav_menu_args "menu" parameter to allow WPML to display the correct menu (removing the requirement to enable the WPML "Adjust IDs for multilingual functionality" option)"
+* Improvement: Make PHP Function and Shortcode textareas readonly
+
 = 2.5.1 =
 
 * Improvement: Redirect to theme editor page after importing a menu theme
