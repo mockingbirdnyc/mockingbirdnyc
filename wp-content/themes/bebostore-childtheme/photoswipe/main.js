@@ -47,20 +47,18 @@ window.onload = function () {
       w: $el.data('large_image_width'),
       h: $el.data('large_image_height')
     }
-  })
+  });
 
-  console.log(items)
+  var $viewButton = jQuery(`
+    <button class="mbird-look-inside-button button active">Look inside</button>
+  `);
+  jQuery('.book-detail > div:first-child > img:first-child').after($viewButton)
 
   var options = { index: 0 };
 
   // Initializes and opens PhotoSwipe
 
-  $imgs.on('click', function(e) {
-    console.log('click!!!', e)
-    e.preventDefault();
-    e.stopPropagation();
-    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-
-    gallery.init();
-  })
+  $viewButton.on('click', function(e) {
+   (new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options)).init();
+  });
 };
