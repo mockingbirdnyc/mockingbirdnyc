@@ -19,3 +19,9 @@ function photo_swipe_scripts() {
 	wp_enqueue_script( 'photoswipe-main-script', get_stylesheet_directory_uri() . '/photoswipe/main.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'photo_swipe_scripts' );
+
+/* Load custom javascript */
+function my_custom_scripts() {
+	wp_enqueue_script( 'my-custom-script', get_stylesheet_directory_uri() . '/custom-scripts.js', array( 'jquery' ) );
+}
+add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );

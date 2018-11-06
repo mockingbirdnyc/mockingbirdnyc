@@ -40,6 +40,11 @@ window.onload = function () {
   pswpElement = document.querySelectorAll('.pswp')[0];
 
   var $imgs = jQuery('.book-detail .woocommerce-product-gallery__image img');
+  console.log($imgs.length)
+  if (!$imgs.length) {
+    return;
+  }
+
   var items = $imgs.map(function() {
     var $el = jQuery(this);
     return {
