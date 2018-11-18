@@ -2292,6 +2292,10 @@ msgstr[1] ""
 msgid "Featured Books"
 msgstr ""
 
+#: woocommerce/single-product/related.php:53
+msgid "You Might Also Like..."
+msgstr ""
+
 #: woocommerce/single-product/tabs/description.php:16
 msgid "Product Description"
 msgstr ""

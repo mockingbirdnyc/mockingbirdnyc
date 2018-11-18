@@ -49,7 +49,7 @@ if ( $products->have_posts() ) : ?>
 		<div class="book-features no-border">
 		<?php } ?>
 			<div class="related products">
-			<div class="title-box"><span><?php _e( 'Featured Books', 'bebostore' ); ?></span></div>
+			<div class="title-box"><span><?php _e( 'You Might Also Like...', 'bebostore' ); ?></span></div>
 				<?php woocommerce_product_loop_start(); ?>
 
 					<?php while ( $products->have_posts() ) : $products->the_post(); ?>
