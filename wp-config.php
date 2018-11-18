@@ -55,8 +55,10 @@ switch(ENVIRONMENT) {
         define('WP_DEBUG', false);
         break;
     case 'ec2':
-        define('WP_SITEURL', 'http://mbird-store.us-east-1.elasticbeanstalk.com');
-        define('WP_HOME', 'http://mbird-store.us-east-1.elasticbeanstalk.com');
+        // define('WP_SITEURL', 'http://mbird-store.us-east-1.elasticbeanstalk.com');
+        // define('WP_HOME', 'http://mbird-store.us-east-1.elasticbeanstalk.com');
+        define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+        define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
         ini_set('log_errors', 'On');
         ini_set('error_log', '/var/app/current/php-errors.log');
         error_reporting(E_ALL);
