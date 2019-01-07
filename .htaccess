@@ -6,8 +6,6 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-RewriteCond %{HTTP:X-Forwarded-Proto} =http
-RewriteRule .* https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 </IfModule>
 
 # END WordPress
