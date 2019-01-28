@@ -1,5 +1,31 @@
 *** Changelog ***
 
+= 1.6.8 - 2019-01-25 =
+* Fix - Guard against themes applying filter with too few params
+
+= 1.6.7 - 2019-01-25 =
+* Fix - Error 10413 when using coupons
+* Fix: All variation details when using buttons on product pages are kept
+* Fix: Always render the PayPal buttons in the mini cart
+
+= 1.6.6 - 2019-01-09 =
+* Fix - Discount items were not being included
+* Add - Filter for order details to accept decimal quantities of products
+* Fix - Unable to buy variation from product page
+* Fix - Can use PayPal from product page without inputting required fields
+* Add - Display PayPal fees under the totals on the order admin page
+* Add - Prefill name, phone, and email info in PayPal Guest Checkout from checkout screen
+
+= 1.6.5 - 2018-10-31 =
+* Fix - Truncate the line item descriptions to avoid exceeding PayPal character limits.
+* Update - WC 3.5 compatibility.
+* Fix - checkout.js script loading when not needed.
+* Fix - Missing shipping total and address when starting from checkout page.
+
+= 1.6.4 - 2018-09-27 =
+* Fix - Billing address from Checkout form not being passed to PayPal via Smart Payment Button.
+* Fix - Checkout form not being validated until after Smart Payment Button payment flow.
+
 = 1.6.3 - 2018-08-15 =
 * Fix - Fatal error caused by a fix for Smart Payment Buttons.
 
